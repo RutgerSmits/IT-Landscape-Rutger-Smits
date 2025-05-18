@@ -47,13 +47,13 @@ function TodoListCard() {
         [items],
     );
 
-    if (items === null) return 'Loading...';
+    if (items === null) return 'Laden...';
 
     return (
         <React.Fragment>
             <AddItemForm onNewItem={onNewItem} />
             {items.length === 0 && (
-                <p className="text-center">You have no todo items yet! Add one above!</p>
+                <p className="text-center">Je hebt nog geen items! Voeg er hierboven één toe.</p>
             )}
             {items.map(item => (
                 <ItemDisplay
@@ -96,7 +96,7 @@ function AddItemForm({ onNewItem }) {
                     value={newItem}
                     onChange={e => setNewItem(e.target.value)}
                     type="text"
-                    placeholder="New Item"
+                    placeholder="Nieuw item"
                     aria-describedby="basic-addon1"
                 />
                 <InputGroup.Append>
@@ -106,7 +106,7 @@ function AddItemForm({ onNewItem }) {
                         disabled={!newItem.length}
                         className={submitting ? 'disabled' : ''}
                     >
-                        {submitting ? 'Adding...' : 'Add Item'}
+                        {submitting ? 'Toevoegen...' : 'Item toevoegen'}
                     </Button>
                 </InputGroup.Append>
             </InputGroup>
@@ -147,8 +147,8 @@ function ItemDisplay({ item, onItemUpdate, onItemRemoval }) {
                         onClick={toggleCompletion}
                         aria-label={
                             item.completed
-                                ? 'Mark item as incomplete'
-                                : 'Mark item as complete'
+                                ? 'Markeer item als onvolledig'
+                                : 'Markeer item als volledig'
                         }
                     >
                         <i
@@ -166,7 +166,7 @@ function ItemDisplay({ item, onItemUpdate, onItemRemoval }) {
                         size="sm"
                         variant="link"
                         onClick={removeItem}
-                        aria-label="Remove Item"
+                        aria-label="Verwijder Item"
                     >
                         <i className="fa fa-trash text-danger" />
                     </Button>
